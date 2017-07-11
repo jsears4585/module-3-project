@@ -1,6 +1,7 @@
 $(function() {
+
   currentUser = null;
-  let color = $('.jscolor').val()
+  color = $('.jscolor').val()
 
   $('.jscolor').on('blur', function(event) {
     color = ( $('.jscolor').val() )
@@ -45,13 +46,6 @@ $(function() {
     setPaintListener()
   }
 
-  $('#getUser').on('click', function(event){
-    event.preventDefault()
-    $.get('http://localhost:3000/user_get', function(d){
-      console.log(d)
-    })
-  })
-
   $('#pixelForm').on('submit', function(event) {
     event.preventDefault()
     let x = $("#xVal").val() // td
@@ -61,20 +55,44 @@ $(function() {
     createTable(x, y, pixelSize)
   })
 
+  class Artwork{
+    constructor(title, artwork_HTML, public_bool){
+      this.title = title
+      this.artwork_HTML = artwork_HTML
+      this.public_bool = public_bool
+      this.username = currentUser
+    }
+    render(){
+      return {
+        title: this.title,
+        artwork_HTML: this.artwork_HTML,
+        public: this.public_bool,
+        username: this.username}
+    }
+  }
+
+  $('#save').on('click', function() {
+    let newArtwork = new Artwork($('#title').val(),
+    $('#paintTable').html(),
+    $('#public').val())
+    let values = newArtwork.render()
+    $.ajax({
+      url: 'http://localhost:3000/artworks',
+      type: 'post',
+      crossDomain: true,
+      data: values
+    })
+  })
+
   $('#userForm').on('submit', function(event) {
     event.preventDefault()
     let values = $(this).serialize()
     currentUser = $('#username').val()
-    console.log(currentUser)
-    console.log('abc')
     $.ajax({
-      url: 'http://localhost:3000/user_create',
+      url: 'http://localhost:3000/users',
       type: 'post',
       crossDomain: true,
-      data: values,
-      success: function() {
-        console.log('blah')
-      }
+      data: values
     })
   })
 })
