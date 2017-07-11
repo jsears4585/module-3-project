@@ -1,5 +1,5 @@
 $(function() {
-
+  currentUser = null;
   let color = $('.jscolor').val()
 
   $('.jscolor').on('blur', function(event) {
@@ -45,14 +45,36 @@ $(function() {
     setPaintListener()
   }
 
+  $('#getUser').on('click', function(event){
+    event.preventDefault()
+    $.get('http://localhost:3000/user_get', function(d){
+      console.log(d)
+    })
+  })
+
   $('#pixelForm').on('submit', function(event) {
+    event.preventDefault()
     let x = $("#xVal").val() // td
     let y = $("#yVal").val() // tr
     let pixelSize = $("#pixelSize").val() // td width / height
     console.log(`x: ${x}, y: ${y}, pixelSize: ${pixelSize}`)
     createTable(x, y, pixelSize)
-    event.preventDefault()
-    event.stopPropagation()
   })
 
+  $('#userForm').on('submit', function(event) {
+    event.preventDefault()
+    let values = $(this).serialize()
+    currentUser = $('#username').val()
+    console.log(currentUser)
+    console.log('abc')
+    $.ajax({
+      url: 'http://localhost:3000/user_create',
+      type: 'post',
+      crossDomain: true,
+      data: values,
+      success: function() {
+        console.log('blah')
+      }
+    })
+  })
 })
