@@ -8,9 +8,6 @@ table {
   border-spacing: 0;
   border: 1px solid #222;
 }
-#colorPicker {
-  display: none;
-}
 
 nav {
   margin-bottom: 20px;
