@@ -1,6 +1,6 @@
 function navName(name) {
   let cappedName = name.charAt(0).toUpperCase() + name.slice(1)
-  $('#profileName').text(`${cappedName}'s Art`)
+  $('#userArtworks').text(`${cappedName}'s Art`)
 }
 
 $('#userForm').on('submit', function(event) {

@@ -1,0 +1,19 @@
+<button id="getArtworks">Try it out</button>
+
+<div>
+  <ul id="communityArtworksList">
+  </ul>
+</div>
+
+<script>
+  $('#getArtworks').on('click', function(event) {
+    event.preventDefault()
+    $.ajax({
+      url: 'http://localhost:3000/artworks',
+      type: 'get',
+      crossDomain: true
+    }).done(function(data) {
+      console.log(data)
+    })
+  })
+</script>
