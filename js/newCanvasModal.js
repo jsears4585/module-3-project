@@ -45,6 +45,8 @@ $('#canvasDimensionsForm').on('submit', function(event) {
   console.log(`x: ${x}, y: ${y}, pixelSize: ${pixelSize}`)
   $("#container").load("partials/workspace.html", function() {
     $("#tools").load("partials/tools.html")
+    $("#saveCanvasModalHTML").load("partials/saveCanvasModal.html")
+
     createTable(x, y, pixelSize)
   })
 })

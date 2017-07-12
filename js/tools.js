@@ -9,3 +9,8 @@ $('.jscolor').on('blur', function(event) {
 $('#gridToggle').on('click', function(event) {
   $('table#paintTable td').css('border', '1px solid #d6d6d6')
 })
+
+$('#showSaveModal').on('click', function(event){
+  event.preventDefault()
+  $('.ui.basic.modal.save-canvas').modal('show')
+})
