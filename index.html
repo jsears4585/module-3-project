@@ -3,53 +3,43 @@
   <head>
     <meta charset="utf-8">
     <title>Paint Time</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <style>
-      td {
-        width: 3px;
-        height: 3px;
-        padding: 0px;
-      }
-      table {
-        border-collapse: collapse;
-        border-spacing: 0;
-        border: 1px solid #222;
-      }
-      #colorPicker {
-        display: none;
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
   </head>
+
   <body>
-    <div id="colorPicker">
-      <p>Color: <input class="jscolor" value="ab2567"></p>
+    <nav>
+      <div class="ui pointing menu">
+        <a class="active item">
+          Draw
+        </a>
+        <a id="profileName" class="item">
+          My Drawings
+        </a>
+        <a class="item">
+          Community Drawings
+        </a>
+        <div class="right menu">
+          <div class="item">
+            <div class="ui transparent icon input">
+              <input type="text" placeholder="Search...">
+              <i class="search link icon"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div id="container">
+
+      <!-- we load everything in here -->
+
     </div>
-    <!--USER-->
-    <form id="userForm">
-      username: <input id="username" type="text" name="username" placeholder="username"><br />
-      <button type="submit">Submit</button>
-    </form>
-    <br>
-    <br>
 
-    <form id="pixelForm">
-      x: <input id="xVal" type="number" min="10" max="300" name="xVal" placeholder="x value" value="100"><br>
-      y: <input id="yVal" type="number" min="10" max="200" name="yVal" placeholder="y value" value="100"><br>
-      pixel size: <input id="pixelSize" type="number" min="1" max="10" name="pixelSize" placeholder="pixel size" value="3"><br>
-      <input type="submit">
-    </form>
-
-    <div id="paintContainer"></div>
-
-    Title: <input id="title" type="text" placeholder="title" name="title">
-    Public: <input id="public" type="checkbox" name="public" >
-    <button id="save">Save</button>
-
-
-
-
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="semantic/semantic.min.js"></script>
     <script src="js/jscolor.min.js"></script>
     <script src="js/main.js"></script>
   </body>
+
 </html>

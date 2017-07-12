@@ -1,7 +1,18 @@
+const currentUser = {
+  name: null,
+  id: null
+}
+
 $(function() {
 
-  currentUser = null;
   color = $('.jscolor').val()
+
+  $("#container").load("partials/authModal.html", function() {
+    $('.ui.basic.modal')
+      .modal({
+        closable: false
+      }).modal('show')
+  })
 
   $('.jscolor').on('blur', function(event) {
     color = ( $('.jscolor').val() )
@@ -25,6 +36,10 @@ $(function() {
       event.stopPropagation()
     })
   }
+
+  $('#gridToggle').on('click', function(event) {
+    $('table#paintTable td').css('border', '1px solid #d6d6d6')
+  })
 
   function createTable(x, y, pixelSize) {
     $('#pixelForm').hide()
@@ -55,14 +70,16 @@ $(function() {
     createTable(x, y, pixelSize)
   })
 
-  class Artwork{
-    constructor(title, artwork_HTML, public_bool){
+  class Artwork {
+
+    constructor(title, artwork_HTML, public_bool) {
       this.title = title
       this.artwork_HTML = artwork_HTML
       this.public_bool = public_bool
       this.username = currentUser
     }
-    render(){
+
+    render() {
       return {
         title: this.title,
         artwork_HTML: this.artwork_HTML,
@@ -78,18 +95,6 @@ $(function() {
     let values = newArtwork.render()
     $.ajax({
       url: 'http://localhost:3000/artworks',
-      type: 'post',
-      crossDomain: true,
-      data: values
-    })
-  })
-
-  $('#userForm').on('submit', function(event) {
-    event.preventDefault()
-    let values = $(this).serialize()
-    currentUser = $('#username').val()
-    $.ajax({
-      url: 'http://localhost:3000/users',
       type: 'post',
       crossDomain: true,
       data: values
