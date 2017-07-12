@@ -32,7 +32,8 @@ function createTable(x, y, pixelSize) {
   $("#canvasContainer").html(t)
   $('#paintTable td').css({
     width: `${pixelSize}px`,
-    height: `${pixelSize}px`
+    height: `${pixelSize}px`,
+    background: 'white'
   })
   setPaintListener()
 }

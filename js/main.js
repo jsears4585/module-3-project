@@ -20,4 +20,8 @@ $(function() {
     $("#container").load("partials/communityArtworks.html")
   })
 
+  $("#workspaceLink").on('click', function() {
+    $("#container").load("partials/newCanvasButton.html")
+  })
+
 })
