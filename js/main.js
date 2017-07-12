@@ -5,7 +5,7 @@ const currentUser = {
 
 $(function() {
 
-  $("#container").load("partials/authModal.html", function() {
+  $("#container").load("partials/signInModal.html", function() {
     $('.ui.basic.modal.auth-modal')
       .modal({
         closable: false

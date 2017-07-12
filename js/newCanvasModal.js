@@ -29,7 +29,7 @@ function createTable(x, y, pixelSize) {
   }
   t += "</tbody></table>"
 
-  $("#paintContainer").html(t)
+  $("#canvasContainer").html(t)
   $('#paintTable td').css({
     width: `${pixelSize}px`,
     height: `${pixelSize}px`
@@ -43,8 +43,8 @@ $('#canvasDimensionsForm').on('submit', function(event) {
   let y = $("#yVal").val() // tr
   let pixelSize = $("#pixelSize").val() // td width / height
   console.log(`x: ${x}, y: ${y}, pixelSize: ${pixelSize}`)
-  $("#container").load("partials/canvas.html", function() {
-    $("#paintTools").load("partials/drawTools.html")
+  $("#container").load("partials/workspace.html", function() {
+    $("#tools").load("partials/tools.html")
     createTable(x, y, pixelSize)
   })
 })
