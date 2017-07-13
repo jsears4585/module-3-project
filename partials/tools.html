@@ -1,9 +1,33 @@
-<div id="colorPicker">
-  <p>Color: <input class="jscolor" value="ab2567"></p>
-</div>
+<input type="hidden" id="picker" class="jscolor" onchange="update(this.jscolor)" value="ab2567">
 
-<button id="gridToggle">Grid Toggle</button>
-<button id="showSaveModal">Save Artwork</button>
+<div class="ui vertical labeled icon menu">
+  <a class="item">
+    <i class="paint brush icon"></i>
+    Paint
+  </a>
+  <a id="colorPicker" class="item">
+    <i></i>
+    <div id="colorSquare">
+    </div>
+    Color
+  </a>
+  <a class="item">
+    <i class="eyedropper icon"></i>
+    Eyedropper
+  </a>
+  <a id="gridToggle" class="item">
+    <i class="grid layout icon"></i>
+    Grid Toggle
+  </a>
+  <a class="item">
+    <i class="erase icon"></i>
+    Erase
+  </a>
+  <a id="showSaveModal" class="item">
+    <i class="save icon"></i>
+    Save
+  </a>
+</div>
 
 <script src="../js/jscolor.min.js"></script>
 <script src="../js/tools.js"></script>

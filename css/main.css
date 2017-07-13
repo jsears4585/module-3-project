@@ -16,3 +16,29 @@ nav {
   margin: 3em;
   padding: 10px;
 }
+
+#tools {
+  width: 100px;
+  position: absolute;
+  top: 70px;
+  right: 100px;
+}
+
+#colorSquare {
+  width: 18px;
+  height: 18px;
+  border: 2px solid black;
+  padding: 10px;
+  margin: 10px auto;
+  border-radius: 5px;
+  background: #ab2567
+}
+
+#picker {
+  background-image: none!important;
+  background-color: none!important;
+  color: none!important;
+  width: 1px!important;
+  height: 1px!important;
+  border: none!important;
+}
