@@ -28,6 +28,23 @@ $('#showSaveModal').on('click', function(event){
   $('.ui.basic.modal.save-canvas').modal('show')
 })
 
+
+function eraser() {
+  $('#paintTable td').on('mousedown', function(event) {
+    event.stopPropagation()
+    $(this).css('background-color', `#ffffff`)
+
+    $('#paintTable td').on('mouseover', function(e) {
+      $(this).css('background-color', `#ffffff`)
+    })
+  })
+  $('#paintTable td').on('mouseup', function(event) {
+    $('#paintTable td').off()
+    eraser()
+    event.stopPropagation()
+  })
+}
+
 function paint1() {
   $('#paintTable td').on('mousedown', function(event) {
     event.stopPropagation()
@@ -137,6 +154,14 @@ function setPaintListener() {
   })
 }
 
+function eraserListener(){
+  $('#eraser').on('click', function(event){
+    event.stopPropagation()
+    $('#paintTable td').off()
+    eraser()
+  })
+}
+
 function brushSizeListener(){
   $('#brush1').on('click', function(event){
     event.stopPropagation()
@@ -161,3 +186,4 @@ function brushSizeListener(){
 
 setPaintListener()
 brushSizeListener()
+eraserListener()
