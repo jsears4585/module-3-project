@@ -165,9 +165,16 @@ function brushSizeListener(){
   $('#brushMenuButton').on('mouseover', function(event){
       $('#brushMenu').show()
   })
-  $('#brushMenuButton').on('mouseout', function(event){
+
+  $('#brushMenu').on('mouseover', function(event){
+      $('#brushMenu').show()
+  })
+  $('#brushMenu').on('mouseout', function(event){
       $('#brushMenu').hide()
   })
+
+
+
 
   $('#brush1').on('click', function(event){
     event.stopPropagation()
