@@ -1,24 +1,7 @@
 //color stuff
-color = $('.jscolor').val()
+globalColor = '#ab2567'
 
-function update(jscolor) {
-  colorWithHash = '#' + jscolor
-  document.getElementById('colorSquare').style.backgroundColor = colorWithHash
-  color = jscolor.valueElement.defaultValue
-  console.log(jscolor)
-}
-
-$('#colorPicker').on('click', function(event) {
-  document.getElementById('picker').jscolor.show()
-
-  // let box = $('.auth-modal').parent().next()
-  // box.css({
-  //   position: 'absolute',
-  // 	top: '200px',
-  // 	left: '200px'
-  // })
-})
-
+// Make actually toggle
 $('#gridToggle').on('click', function(event) {
   $('table#paintTable td').css('border', '1px solid #d6d6d6')
 })
@@ -27,3 +10,10 @@ $('#showSaveModal').on('click', function(event){
   event.preventDefault()
   $('.ui.basic.modal.save-canvas').modal('show')
 })
+
+$(".basic").spectrum({
+    color: "#f00",
+    change: function(color) {
+        globalColor = color.toHexString()
+    }
+});

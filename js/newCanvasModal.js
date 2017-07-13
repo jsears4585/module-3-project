@@ -1,6 +1,6 @@
 function paint() {
   $('#paintTable td').on('mouseover', function(e) {
-    $(this).css('background-color', `#${color}`)
+    $(this).css('background-color', `${globalColor}`)
     e.stopPropagation()
   })
 }

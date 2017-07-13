@@ -34,11 +34,12 @@ nav {
   background: #ab2567
 }
 
-#picker {
-  background-image: none!important;
-  background-color: none!important;
-  color: none!important;
-  width: 1px!important;
-  height: 1px!important;
-  border: none!important;
+.sp-replacer {
+  border: none;
+  background: none;
+  color: none;
+}
+
+.sp-dd {
+  display: none;
 }
