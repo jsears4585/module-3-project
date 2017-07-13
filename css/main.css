@@ -98,7 +98,6 @@ nav {
   margin: 15px auto;
   height: 10px;
   width: 10px;
-  background-color: #000;
 }
 
 #largeBrushIcon {
@@ -106,8 +105,32 @@ nav {
   margin: 10px auto;
   height: 20px;
   width: 20px;
-  background-color: #000;
 }
+
+
+#eraserMenu {
+  display: none;
+  position: absolute;
+  top: 327px;
+  right: 200px;
+  height: 90px;
+}
+
+#eraserMenu a.item {
+  display: inline-block;
+  width: 100px;
+  height: 90px;
+}
+
+#eraserMenu a.item div.brushSize {
+  display: block;
+  border: 1px solid #000;
+}
+
+#eraserMenu a.item div.text {
+  display: block;
+}
+
 
 #mainToolsMenu a.item {
   display: block;

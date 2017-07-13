@@ -1,19 +1,7 @@
-//color stuff
-globalColor = '#00ff02'
-globalEye = 'off'
+//CURRENT SELECTED COLOR
+let globalColor = '#00ff02'
 
-// Make actually toggle
-$('#gridToggle').on('click', function(event) {
-  event.preventDefault()
-  $('#gridToggle').toggleClass('active')
-  $('#paintTable td').toggleClass('gridBorder')
-})
-
-$('#showSaveModal').on('click', function(event){
-  event.preventDefault()
-  $('.ui.basic.modal.save-canvas').modal('show')
-})
-
+//COLOR SELECTOR
 $('.basic').spectrum({
   color: '#00ff02',
   change: function(color) {
@@ -29,45 +17,10 @@ function rgb2hex(rgb) {
   return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3])
 }
 
-function eyedrop() {
-  $('#paintTable td').on('click', function(event) {
-    event.preventDefault()
-    event.stopPropagation()
-    globalColor = rgb2hex( $(this).css('backgroundColor') )
-    $('.sp-preview-inner').css('backgroundColor', globalColor)
-  })
-}
-
-$('#eyedropper').on('click', function(event) {
-  event.preventDefault()
-  $('#paintTable td').off()
-  $('.dependentTools').removeClass('active')
-  $('.brushSizes').removeClass('active')
-  $(this).toggleClass('active')
-  globalEye === 'off' ? globalEye = 'on' : globalEye = 'off'
-  if (globalEye === 'on') {
-    $('#paintTable').css('cursor','url(http://icons.iconarchive.com/icons/designcontest/outline/16/Eyedropper-icon.png), auto')
-    $('#paintTable').off()
-    eyedrop()
-  } else {
-    $('#paintTable').css('cursor','default')
-    $('#paintTable td').off()
-    setPaintListener()
-  }
-})
-
-function eraser() {
-  $('#paintTable td').on('mousedown', function(event) {
-    event.stopPropagation()
-    $(this).css('background-color', `#ffffff`)
-
-    $('#paintTable td').on('mouseover', function(e) {
-      $(this).css('background-color', `#ffffff`)
-    })
-  })
-  $('#paintTable td').on('mouseup', function(event) {
-    $('#paintTable td').off()
-    eraser()
+//PAINT / BRUSH
+function setPaintListener() {
+  $('#paintTable').on('mouseover', function(event) {
+    console.log('ready to paint!')
     event.stopPropagation()
   })
 }
@@ -104,7 +57,6 @@ function paint4() {
 
     $('#paintTable td').on('mouseover', function(e) {
       $(this).css('background-color', `${globalColor}`)
-
       //attempt at enalarging brush serialize
       let tdClass = parseInt(this.className)
       let trClass = parseInt(this.parentElement.className)
@@ -173,24 +125,6 @@ function paint9() {
   })
 }
 
-function setPaintListener() {
-  $('#paintTable').on('mouseover', function(event) {
-    console.log('ready to paint!')
-    event.stopPropagation()
-  })
-}
-
-function eraserListener(){
-  $('#eraser').on('click', function(event){
-    $('.dependentTools').removeClass('active')
-    $('.brushSizes').removeClass('active')
-    $(this).toggleClass('active')
-    event.stopPropagation()
-    $('#paintTable td').off()
-    eraser()
-  })
-}
-
 function brushSizeListener(){
   $('#brushMenuButton').on('mouseover', function(event){
       $('#brushMenu').show()
@@ -211,6 +145,7 @@ function brushSizeListener(){
     $(this).toggleClass('active')
     $('#brushMenuButton').addClass('active')
     $('#paintTable td').off()
+    $('#paintTable').css('cursor','url("css/cursors/paintbrush_cursor.png"), auto')
     paint1()
   })
 
@@ -221,6 +156,7 @@ function brushSizeListener(){
     $(this).toggleClass('active')
     $('#brushMenuButton').addClass('active')
     $('#paintTable td').off()
+    $('#paintTable').css('cursor','url("css/cursors/paintbrush_cursor.png"), auto')
     paint4()
   })
 
@@ -232,10 +168,223 @@ function brushSizeListener(){
     $(this).toggleClass('active')
     $('#brushMenuButton').addClass('active')
     $('#paintTable td').off()
+    $('#paintTable').css('cursor','url("css/cursors/paintbrush_cursor.png"), auto')
     paint9()
   })
 }
 
-setPaintListener()
+
+//EYEDROPPER
+function eyedrop() {
+  $('#paintTable td').on('click', function(event) {
+    event.preventDefault()
+    event.stopPropagation()
+    globalColor = rgb2hex( $(this).css('backgroundColor') )
+    $('.sp-preview-inner').css('backgroundColor', globalColor)
+  })
+}
+
+function eyedropperListener(){
+  $('#eyedropper').on('click', function(event) {
+    event.preventDefault()
+    $('#paintTable td').off()
+    $('.dependentTools').removeClass('active')
+    $('.brushSizes').removeClass('active')
+    $(this).toggleClass('active')
+
+
+
+    $('#paintTable').css('cursor','url("css/cursors/eyedropper_cursor.png"), auto')
+      $('#paintTable').off()
+      eyedrop()
+  })
+}
+
+//ERASER
+
+// function eraser() {
+//   $('#paintTable td').on('mousedown', function(event) {
+//     event.stopPropagation()
+//     $(this).css('background-color', `#ffffff`)
+//
+//     $('#paintTable td').on('mouseover', function(e) {
+//       $(this).css('background-color', `#ffffff`)
+//     })
+//   })
+//   $('#paintTable td').on('mouseup', function(event) {
+//     $('#paintTable td').off()
+//     eraser()
+//     event.stopPropagation()
+//   })
+// }
+
+function eraser1() {
+  $('#paintTable td').on('mousedown', function(event) {
+    event.stopPropagation()
+    $(this).css('background-color', '#ffffff')
+
+    $('#paintTable td').on('mouseover', function(e) {
+      $(this).css('background-color', '#ffffff')
+    })
+  })
+  $('#paintTable td').on('mouseup', function(event) {
+    $('#paintTable td').off()
+    eraser1()
+    event.stopPropagation()
+  })
+}
+
+function eraser4() {
+  $('#paintTable td').on('mousedown', function(event) {
+    event.stopPropagation()
+    $(this).css('background-color', '#ffffff')
+    //attempt at enalarging brush serialize
+    let tdClass = parseInt(this.className)
+    let trClass = parseInt(this.parentElement.className)
+      // //sides of current selected td
+      $(`tr.${trClass} td.${tdClass+1}`).css('background-color', '#ffffff')
+      //under current selected td
+      $(`tr.${trClass+1} td.${tdClass}`).css('background-color', '#ffffff')
+      $(`tr.${trClass+1} td.${tdClass+1}`).css('background-color', '#ffffff')
+    // end attempt enlarging brush size
+
+    $('#paintTable td').on('mouseover', function(e) {
+      $(this).css('background-color', `#ffffff`)
+      //attempt at enalarging brush serialize
+      let tdClass = parseInt(this.className)
+      let trClass = parseInt(this.parentElement.className)
+        // //sides of current selected td
+        $(`tr.${trClass} td.${tdClass+1}`).css('background-color', '#ffffff')
+        //under current selected td
+        $(`tr.${trClass+1} td.${tdClass}`).css('background-color', '#ffffff')
+        $(`tr.${trClass+1} td.${tdClass+1}`).css('background-color', '#ffffff')
+      // end attempt enlarging brush size
+      e.stopPropagation()
+    })
+  })
+  $('#paintTable td').on('mouseup', function(event) {
+    $('#paintTable td').off()
+    eraser4()
+    event.stopPropagation()
+  })
+}
+
+function eraser9() {
+  $('#paintTable td').on('mousedown', function(event) {
+    event.stopPropagation()
+    $(this).css('background-color', `#ffffff`)
+    //attempt at enalarging brush serialize
+    let tdClass = parseInt(this.className)
+    let trClass = parseInt(this.parentElement.className)
+      // //sides of current selected td
+      $(`tr.${trClass} td.${tdClass-1}`).css('background-color', '#ffffff')
+      $(`tr.${trClass} td.${tdClass+1}`).css('background-color', '#ffffff')
+      //above current selected td
+      $(`tr.${trClass-1} td.${tdClass-1}`).css('background-color', '#ffffff')
+      $(`tr.${trClass-1} td.${tdClass}`).css('background-color', '#ffffff')
+      $(`tr.${trClass-1} td.${tdClass+1}`).css('background-color', '#ffffff')
+      //under current selected td
+      $(`tr.${trClass+1} td.${tdClass-1}`).css('background-color', '#ffffff')
+      $(`tr.${trClass+1} td.${tdClass}`).css('background-color', '#ffffff')
+      $(`tr.${trClass+1} td.${tdClass+1}`).css('background-color', '#ffffff')
+    // end attempt enlarging brush size
+
+    $('#paintTable td').on('mouseover', function(e) {
+      $(this).css('background-color', '#ffffff')
+
+      //attempt at enalarging brush serialize
+      let tdClass = parseInt(this.className)
+      let trClass = parseInt(this.parentElement.className)
+        // //sides of current selected td
+        $(`tr.${trClass} td.${tdClass-1}`).css('background-color', '#ffffff')
+        $(`tr.${trClass} td.${tdClass+1}`).css('background-color', '#ffffff')
+        //above current selected td
+        $(`tr.${trClass-1} td.${tdClass-1}`).css('background-color', '#ffffff')
+        $(`tr.${trClass-1} td.${tdClass}`).css('background-color', '#ffffff')
+        $(`tr.${trClass-1} td.${tdClass+1}`).css('background-color', '#ffffff')
+        //under current selected td
+        $(`tr.${trClass+1} td.${tdClass-1}`).css('background-color', '#ffffff')
+        $(`tr.${trClass+1} td.${tdClass}`).css('background-color', '#ffffff')
+        $(`tr.${trClass+1} td.${tdClass+1}`).css('background-color', '#ffffff')
+      // end attempt enlarging brush size
+      e.stopPropagation()
+    })
+  })
+  $('#paintTable td').on('mouseup', function(event) {
+    $('#paintTable td').off()
+    eraser9()
+
+    event.stopPropagation()
+  })
+}
+
+
+function eraserSizeListener(){
+  $('#eraserMenuButton').on('mouseover', function(event){
+      $('#eraserMenu').show()
+  })
+
+  $('#eraserMenu').on('mouseover', function(event){
+      $('#eraserMenu').show()
+  })
+
+  $('#eraserMenu').on('mouseout', function(event){
+      $('#eraserMenu').hide()
+  })
+
+  $('#eraser1').on('click', function(event){
+    event.stopPropagation()
+    $('.brushSizes').removeClass('active')
+    $('.dependentTools').removeClass('active')
+    $(this).toggleClass('active')
+    $('#eraserMenuButton').addClass('active')
+    $('#paintTable td').off()
+    $('#paintTable').css('cursor','url("css/cursors/eraser_cursor.png"), auto')
+    eraser1()
+  })
+
+  $('#eraser4').on('click', function(event){
+    event.stopPropagation()
+    $('.brushSizes').removeClass('active')
+    $('.dependentTools').removeClass('active')
+    $(this).toggleClass('active')
+    $('#eraserMenuButton').addClass('active')
+    $('#paintTable td').off()
+    $('#paintTable').css('cursor','url("css/cursors/eraser_cursor.png"), auto')
+    eraser4()
+  })
+
+
+  $('#eraser9').on('click', function(event){
+    event.stopPropagation()
+    $('.brushSizes').removeClass('active')
+    $('.dependentTools').removeClass('active')
+    $(this).toggleClass('active')
+    $('#eraserMenuButton').addClass('active')
+    $('#paintTable td').off()
+    $('#paintTable').css('cursor','url("css/cursors/eraser_cursor.png"), auto')
+    eraser9()
+  })
+}
+
+
+
+
+//GRID TOGGLE
+$('#gridToggle').on('click', function(event) {
+  event.preventDefault()
+  $('#gridToggle').toggleClass('active')
+  $('#paintTable td').toggleClass('gridBorder')
+})
+
+
+//SAVE
+$('#showSaveModal').on('click', function(event){
+  event.preventDefault()
+  $('.ui.basic.modal.save-canvas').modal('show')
+})
+
+
 brushSizeListener()
-eraserListener()
+eyedropperListener()
+eraserSizeListener()
