@@ -5,7 +5,7 @@ globalEye = 'off'
 // Make actually toggle
 $('#gridToggle').on('click', function(event) {
   event.preventDefault()
-  $('table#paintTable td').toggleClass('gridBorder')
+  $('#paintTable td').toggleClass('gridBorder')
 })
 
 $('#showSaveModal').on('click', function(event){
@@ -29,7 +29,9 @@ function rgb2hex(rgb) {
 }
 
 function eyedrop() {
-  $('table td').on('click', function(event) {
+  $('#paintTable td').on('click', function(event) {
+    $('.dependent-tools').removeClass('active')
+    $('.brushSizes').removeClass('active')
     event.preventDefault()
     event.stopPropagation()
     globalColor = rgb2hex( $(this).css('backgroundColor') )
@@ -39,15 +41,17 @@ function eyedrop() {
 
 $('#eyedropper').on('click', function(event) {
   event.preventDefault()
+  $('#paintTable td').off()
+  $('.dependent-tools').removeClass('active')
   $(this).toggleClass('active')
   globalEye === 'off' ? globalEye = 'on' : globalEye = 'off'
   if (globalEye === 'on') {
-    $('table').css('cursor','url(http://icons.iconarchive.com/icons/designcontest/outline/16/Eyedropper-icon.png), auto')
-    $('table').off()
+    $('#paintTable').css('cursor','url(http://icons.iconarchive.com/icons/designcontest/outline/16/Eyedropper-icon.png), auto')
+    $('#paintTable').off()
     eyedrop()
   } else {
-    $('table').css('cursor','default')
-    $('table td').off()
+    $('#paintTable').css('cursor','default')
+    $('#paintTable td').off()
     setPaintListener()
   }
 })
@@ -178,6 +182,9 @@ function setPaintListener() {
 
 function eraserListener(){
   $('#eraser').on('click', function(event){
+    $('.dependent-tools').removeClass('active')
+    $('.brushSizes').removeClass('active')
+    $(this).toggleClass('active')
     event.stopPropagation()
     $('#paintTable td').off()
     eraser()
@@ -199,20 +206,31 @@ function brushSizeListener(){
 
   $('#brush1').on('click', function(event){
     event.stopPropagation()
+    $('.brushSizes').removeClass('active')
+    $('.dependent-tools').removeClass('active')
+    $(this).toggleClass('active')
+    $('#brushMenuButton').addClass('active')
     $('#paintTable td').off()
     paint1()
   })
 
   $('#brush4').on('click', function(event){
     event.stopPropagation()
+    $('.brushSizes').removeClass('active')
+    $('.dependent-tools').removeClass('active')
+    $(this).toggleClass('active')
+    $('#brushMenuButton').addClass('active')
     $('#paintTable td').off()
-    console.log('paintTable TD .off')
     paint4()
   })
 
 
   $('#brush9').on('click', function(event){
     event.stopPropagation()
+    $('.brushSizes').removeClass('active')
+    $('.dependent-tools').removeClass('active')
+    $(this).toggleClass('active')
+    $('#brushMenuButton').addClass('active')
     $('#paintTable td').off()
     paint9()
   })
