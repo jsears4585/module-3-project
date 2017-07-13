@@ -3,7 +3,8 @@ globalColor = '#00ff02'
 
 // Make actually toggle
 $('#gridToggle').on('click', function(event) {
-  $('table#paintTable td').css('border', '1px solid #d6d6d6')
+  event.preventDefault()
+  $('table#paintTable td').toggleClass('gridBorder')
 })
 
 $('#showSaveModal').on('click', function(event){
@@ -12,8 +13,8 @@ $('#showSaveModal').on('click', function(event){
 })
 
 $(".basic").spectrum({
-    color: "#00ff02",
-    change: function(color) {
-        globalColor = color.toHexString()
-    }
+  color: "#00ff02",
+  change: function(color) {
+    globalColor = color.toHexString()
+  }
 });
