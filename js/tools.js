@@ -5,6 +5,7 @@ globalEye = 'off'
 // Make actually toggle
 $('#gridToggle').on('click', function(event) {
   event.preventDefault()
+  $('#gridToggle').toggleClass('active')
   $('#paintTable td').toggleClass('gridBorder')
 })
 
@@ -30,8 +31,6 @@ function rgb2hex(rgb) {
 
 function eyedrop() {
   $('#paintTable td').on('click', function(event) {
-    $('.dependent-tools').removeClass('active')
-    $('.brushSizes').removeClass('active')
     event.preventDefault()
     event.stopPropagation()
     globalColor = rgb2hex( $(this).css('backgroundColor') )
@@ -42,7 +41,8 @@ function eyedrop() {
 $('#eyedropper').on('click', function(event) {
   event.preventDefault()
   $('#paintTable td').off()
-  $('.dependent-tools').removeClass('active')
+  $('.dependentTools').removeClass('active')
+  $('.brushSizes').removeClass('active')
   $(this).toggleClass('active')
   globalEye === 'off' ? globalEye = 'on' : globalEye = 'off'
   if (globalEye === 'on') {
@@ -182,7 +182,7 @@ function setPaintListener() {
 
 function eraserListener(){
   $('#eraser').on('click', function(event){
-    $('.dependent-tools').removeClass('active')
+    $('.dependentTools').removeClass('active')
     $('.brushSizes').removeClass('active')
     $(this).toggleClass('active')
     event.stopPropagation()
@@ -207,7 +207,7 @@ function brushSizeListener(){
   $('#brush1').on('click', function(event){
     event.stopPropagation()
     $('.brushSizes').removeClass('active')
-    $('.dependent-tools').removeClass('active')
+    $('.dependentTools').removeClass('active')
     $(this).toggleClass('active')
     $('#brushMenuButton').addClass('active')
     $('#paintTable td').off()
@@ -217,7 +217,7 @@ function brushSizeListener(){
   $('#brush4').on('click', function(event){
     event.stopPropagation()
     $('.brushSizes').removeClass('active')
-    $('.dependent-tools').removeClass('active')
+    $('.dependentTools').removeClass('active')
     $(this).toggleClass('active')
     $('#brushMenuButton').addClass('active')
     $('#paintTable td').off()
@@ -228,7 +228,7 @@ function brushSizeListener(){
   $('#brush9').on('click', function(event){
     event.stopPropagation()
     $('.brushSizes').removeClass('active')
-    $('.dependent-tools').removeClass('active')
+    $('.dependentTools').removeClass('active')
     $(this).toggleClass('active')
     $('#brushMenuButton').addClass('active')
     $('#paintTable td').off()
