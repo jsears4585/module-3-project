@@ -1,5 +1,6 @@
 function printTitle(data) {
   data.forEach(function(artwork) {
+    $('#communityArtworksList').empty()
     $('#communityArtworksList').append(`<li><a style='cursor: pointer;' data-id='${artwork.id}'>${artwork.title}</a></li>`)
   })
 }

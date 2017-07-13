@@ -48,3 +48,12 @@ nav {
   border-radius: 2px;
   border: 2px solid black;
 }
+
+.basic::before {
+  content: '';
+  position: absolute;
+  top: -25%;
+  left: -25%;
+  right: -25%;
+  bottom: -25%;
+}

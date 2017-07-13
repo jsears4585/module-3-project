@@ -1,5 +1,6 @@
 function printTitle(data) {
   data.forEach(function(artwork) {
+    $('#userArtworksList').empty()
     $('#userArtworksList').append(`<li><a style='cursor: pointer;' data-id='${artwork.id}'>${artwork.title}</a></li>`)
   })
 }
@@ -19,7 +20,7 @@ $(function() {
       $.get(`http://localhost:3000/artworks/${artworkID}`, function(data) {
         $('#imageHolder-user').empty()
         $('#titleHeader-user').text(data.title)
-        $('#imageHolder-user').append(data.artwork_HTML)
+        $('#imageHolder-user').html(data.artwork_HTML)
         $('.ui.basic.modal.show-user-artwork').modal('show')
       })
     })
