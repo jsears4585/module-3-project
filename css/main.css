@@ -24,22 +24,27 @@ nav {
   right: 100px;
 }
 
-#colorSquare {
-  width: 18px;
-  height: 18px;
-  border: 2px solid black;
-  padding: 10px;
-  margin: 10px auto;
-  border-radius: 5px;
-  background: #ab2567
-}
-
 .sp-replacer {
   border: none;
   background: none;
   color: none;
 }
 
+.sp-replacer {
+  position: relative;
+  left: 3px;
+  top: -2px;
+}
+
 .sp-dd {
   display: none;
+}
+
+.sp-preview {
+  border: none;
+}
+
+.sp-preview-inner {
+  border-radius: 2px;
+  border: 2px solid black;
 }

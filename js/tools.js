@@ -1,5 +1,5 @@
 //color stuff
-globalColor = '#ab2567'
+globalColor = '#00ff02'
 
 // Make actually toggle
 $('#gridToggle').on('click', function(event) {
@@ -12,7 +12,7 @@ $('#showSaveModal').on('click', function(event){
 })
 
 $(".basic").spectrum({
-    color: "#f00",
+    color: "#00ff02",
     change: function(color) {
         globalColor = color.toHexString()
     }
