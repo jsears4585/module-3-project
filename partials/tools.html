@@ -1,28 +1,54 @@
-<div class="ui vertical labeled icon menu">
-  <a class="item">
-    <i class="paint brush icon"></i>
-    Paint
-  </a>
+<div id="mainToolsMenu" class="ui vertical labeled icon menu">
+
   <a id="colorPicker" class="item">
     <i></i>
     <input id="colorSquare" type='text' class="basic"/>
     Color
   </a>
+
+  <a id="brushMenuButton" class="item">
+    <i class="paint brush icon"></i>
+    Brush Sizes
+  </a>
+
   <a id="eyedropper" class="item">
     <i class="eyedropper icon"></i>
     Eyedropper
   </a>
+
+  <a id="eraser" class="item">
+    <i class="erase icon"></i>
+    Erase
+  </a>
+
   <a id="gridToggle" class="item">
     <i class="grid layout icon"></i>
     Grid Toggle
   </a>
-  <a class="item">
-    <i class="erase icon"></i>
-    Erase
-  </a>
+
   <a id="showSaveModal" class="item">
     <i class="save icon"></i>
     Save
+  </a>
+  
+</div>
+
+<div id="brushMenu" class="ui labled icon menu">
+  <a id="brush9" class="item">
+    <div id="largeBrushIcon" class="brushSize"></div>
+    Big Brush
+  </a>
+
+  <a id="brush4" class="item">
+    <div id="mediumBrushIcon" class="brushSize"></div>
+    Medium
+  </a>
+
+  <a id="brush1" class="item">
+    <div id="smallBrushIcon" class="brushSize"></div>
+    <div class="text">
+      Small
+    </div>
   </a>
 </div>
 

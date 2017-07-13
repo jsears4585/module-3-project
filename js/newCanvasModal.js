@@ -1,29 +1,11 @@
-function paint() {
-  $('#paintTable td').on('mouseover', function(e) {
-    $(this).css('background-color', `${globalColor}`)
-    e.stopPropagation()
-  })
-}
-
-function setPaintListener() {
-  $('#paintTable').on('mousedown', function(event) {
-    paint()
-    event.stopPropagation()
-  })
-  $('#paintTable').on('mouseup', function(event) {
-    $('#paintTable td').off()
-    event.stopPropagation()
-  })
-}
-
 function createTable(x, y, pixelSize) {
   $('#colorPicker').show()
 
   let t = "<table id='paintTable'><thead></thead><tbody>"
   for(let i=0; i<y; i++) {
-    t += "<tr>"
+    t += `<tr class='${i}'>`
     for(let j=0; j<x; j++) {
-      t += "<td></td>"
+      t += `<td class='${j}'></td>`
     }
     t += "</tr>"
   }
@@ -35,7 +17,7 @@ function createTable(x, y, pixelSize) {
     height: `${pixelSize}px`,
     background: 'white'
   })
-  setPaintListener()
+  // setPaintListener()
 }
 
 $('#canvasDimensionsForm').on('submit', function(event) {
