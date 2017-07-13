@@ -12,7 +12,8 @@ class Artwork {
       title: this.title,
       artwork_HTML: this.artwork_HTML,
       public: this.public_bool,
-      user_id: this.user_id
+      user_id: this.user_id,
+      image: $('#screenshotDiv').text()
     }
   }
 }
@@ -23,6 +24,8 @@ $('#saveCanvasForm').on('submit', function(event) {
   $('#paintTable').html(),
   $('#public').val())
   let values = newArtwork.render()
+  $('#canvasContainer').append(`<img src='${values.image}'>`)
+  debugger
   $.ajax({
     url: 'http://localhost:3000/artworks',
     type: 'post',
