@@ -17,7 +17,7 @@ nav {
   padding: 10px;
 }
 
-#tools {
+#mainToolsMenu {
   width: 100px;
   position: absolute;
   top: 70px;
@@ -41,4 +41,15 @@ nav {
   width: 1px!important;
   height: 1px!important;
   border: none!important;
+}
+
+#brushMenu {
+  display: none;
+  position: absolute;
+  top: 70px;
+  right: 200px;
+}
+
+#brushMenu a.item {
+  display: inline-block;
 }

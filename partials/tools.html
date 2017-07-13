@@ -1,6 +1,11 @@
 <input type="hidden" id="picker" class="jscolor" onchange="update(this.jscolor)" value="ab2567">
 
-<div class="ui vertical labeled icon menu">
+
+<div id="mainToolsMenu" class="ui vertical labeled icon menu">
+  <a id="brushMenuButton" class="item">
+    <i class="paint brush icon"></i>
+    Brush Sizes
+  </a>
   <a id="brush1" class="item">
     <i class="paint brush icon"></i>
     Small Brush
@@ -34,6 +39,22 @@
   <a id="showSaveModal" class="item">
     <i class="save icon"></i>
     Save
+  </a>
+</div>
+
+
+<div id="brushMenu" class="ui labled icon menu">
+  <a class="item">
+    <i class="paint brush icon"></i>
+    Small
+  </a>
+  <a class="item">
+    <i class="paint brush icon"></i>
+    Medium
+  </a>
+  <a class="item">
+    <i class="paint brush icon"></i>
+    Large
   </a>
 </div>
 

@@ -148,7 +148,6 @@ function paint9() {
 
 function setPaintListener() {
   $('#paintTable').on('mouseover', function(event) {
-
     console.log('ready to paint!')
     event.stopPropagation()
   })
@@ -163,6 +162,13 @@ function eraserListener(){
 }
 
 function brushSizeListener(){
+  $('#brushMenuButton').on('mouseover', function(event){
+      $('#brushMenu').show()
+  })
+  $('#brushMenuButton').on('mouseout', function(event){
+      $('#brushMenu').hide()
+  })
+
   $('#brush1').on('click', function(event){
     event.stopPropagation()
     $('#paintTable td').off()
