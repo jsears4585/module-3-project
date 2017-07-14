@@ -19,7 +19,7 @@ $('#userForm').on('submit', function(event) {
     currentUser.id = data.id
     navName(currentUser.name)
     // call the next thing we need to do
-    $("#container").load("partials/newCanvasButton.html")
+    $("#container").load("partials/communityArtworks.html")
   })
 
 })

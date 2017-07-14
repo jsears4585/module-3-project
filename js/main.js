@@ -31,7 +31,10 @@ $(function() {
 
   $("#workspaceLink").on('click', function() {
     styleLink($(this))
-    $("#container").load("partials/newCanvasButton.html")
+    if ( $('#container').children(1).attr('id') !== 'canvasContainer' ) {
+      $("#container").load("partials/newCanvasModal.html", function() {
+        $('.ui.basic.modal.new-canvas').modal('show')
+      })
+    }
   })
-
 })

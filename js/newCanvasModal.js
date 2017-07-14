@@ -1,5 +1,4 @@
 function createTable(x, y, pixelSize) {
-
   let t = "<table id='paintTable'><thead></thead><tbody>"
   for(let i=0; i<y; i++) {
     t += `<tr class='${i}'>`
@@ -9,7 +8,6 @@ function createTable(x, y, pixelSize) {
     t += "</tr>"
   }
   t += "</tbody></table>"
-
   $("#canvasContainer").html(t)
   $('#paintTable td').css({
     width: `${pixelSize}px`,
