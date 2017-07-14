@@ -367,9 +367,6 @@ function eraserSizeListener(){
   })
 }
 
-
-
-
 //GRID TOGGLE
 $('#gridToggle').on('click', function(event) {
   event.preventDefault()
@@ -377,13 +374,19 @@ $('#gridToggle').on('click', function(event) {
   $('#paintTable td').toggleClass('gridBorder')
 })
 
-
 //SAVE
 $('#showSaveModal').on('click', function(event){
   event.preventDefault()
   $('.ui.basic.modal.save-canvas').modal('show')
+  $('#paintTable').css('border', '0')
+  html2canvas(document.querySelector('#paintTable'), {
+    onrendered: function(canvas) {
+      let image = canvas.toDataURL('image/png')
+      $('#screenshotDiv').text(image)
+      $('#paintTable').css('border', '1px solid #222')
+    }
+  })
 })
-
 
 brushSizeListener()
 eyedropperListener()
