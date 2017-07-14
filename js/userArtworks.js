@@ -1,7 +1,7 @@
 function printTitle(data) {
   $('#userArtworksList').append('<div style="width: 20%" class="grid-sizer"></div>')
   data.forEach(function(artwork) {
-    $('#userArtworksList').append(`<div style="width: 20%; margin-bottom: 55px;" class="grid-item"><h3>${artwork.title}</h3><img style="max-width: 200px;" src='${artwork.image}' alt='${artwork.title}'></div>`)
+    $('#userArtworksList').append(`<div style="width: 20%; margin-bottom: 55px;" class="grid-item"><h3>${artwork.title}</h3><img style="max-width: 200px; border: 1px solid #cacaca" src='${artwork.image}' alt='${artwork.title}'></div>`)
     console.log(artwork)
   })
   var $grid = $('.masonryGrid').masonry({
