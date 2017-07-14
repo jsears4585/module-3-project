@@ -1,5 +1,5 @@
 function createTable(x, y, pixelSize) {
-  $('#colorPicker').show()
+  // $('#colorPicker').show()
 
   let t = "<table id='paintTable'><thead></thead><tbody>"
   for(let i=0; i<y; i++) {
