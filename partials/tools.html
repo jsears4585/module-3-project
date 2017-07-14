@@ -3,52 +3,69 @@
   <a id="colorPicker" class="item">
     <i></i>
     <input id="colorSquare" type='text' class="basic"/>
-    Color
+    <div class="text">Color</div>
   </a>
 
-  <a id="brushMenuButton" class="item">
+  <a id="brushMenuButton" class="item dependentTools">
     <i class="paint brush icon"></i>
-    Brush Sizes
+    Brush
   </a>
 
-  <a id="eyedropper" class="item">
+  <a id="eyedropper" class="item dependentTools">
     <i class="eyedropper icon"></i>
     Eyedropper
   </a>
 
-  <a id="eraser" class="item">
+  <a id="eraserMenuButton" class="item dependentTools">
     <i class="erase icon"></i>
     Erase
   </a>
 
   <a id="gridToggle" class="item">
     <i class="grid layout icon"></i>
-    Grid Toggle
+    Grid
   </a>
 
   <a id="showSaveModal" class="item">
     <i class="save icon"></i>
     Save
   </a>
-  
+
 </div>
 
+<!-- BRUSH SIZE COLLAPSE MENU -->
 <div id="brushMenu" class="ui labled icon menu">
-  <a id="brush9" class="item">
+  <a id="brush9" class="item brushSizes">
     <div id="largeBrushIcon" class="brushSize"></div>
-    Big Brush
+    Large
   </a>
 
-  <a id="brush4" class="item">
+  <a id="brush4" class="item brushSizes">
     <div id="mediumBrushIcon" class="brushSize"></div>
     Medium
   </a>
 
-  <a id="brush1" class="item">
+  <a id="brush1" class="item brushSizes">
     <div id="smallBrushIcon" class="brushSize"></div>
-    <div class="text">
       Small
-    </div>
+  </a>
+</div>
+
+<!-- ERASER SIZE COLLAPSE MENU -->
+<div id="eraserMenu" class="ui labled icon menu">
+  <a id="eraser9" class="item brushSizes">
+    <div id="largeBrushIcon" class="brushSize"></div>
+    Large
+  </a>
+
+  <a id="eraser4" class="item brushSizes">
+    <div id="mediumBrushIcon" class="brushSize"></div>
+    Medium
+  </a>
+
+  <a id="eraser1" class="item brushSizes">
+    <div id="smallBrushIcon" class="brushSize"></div>
+      Small
   </a>
 </div>
 
