@@ -128,40 +128,38 @@ function brushSizeListener(){
       $('#brushMenu').hide()
   })
 
-
   $('#brush1').on('click', function(event){
     event.stopPropagation()
-    $('.brushSizes').removeClass('active')
-    $('.dependentTools').removeClass('active')
+    brushPrep('brush')
     $(this).toggleClass('active')
-    $('#brushMenuButton').addClass('active')
-    $('#paintTable td').off()
-    $('#paintTable').css('cursor','url("css/cursors/paintbrush_cursor.png"), auto')
     paint1()
+
   })
 
   $('#brush4').on('click', function(event){
     event.stopPropagation()
-    $('.brushSizes').removeClass('active')
-    $('.dependentTools').removeClass('active')
+    brushPrep('brush')
     $(this).toggleClass('active')
-    $('#brushMenuButton').addClass('active')
-    $('#paintTable td').off()
-    $('#paintTable').css('cursor','url("css/cursors/paintbrush_cursor.png"), auto')
     paint4()
   })
 
 
   $('#brush9').on('click', function(event){
     event.stopPropagation()
-    $('.brushSizes').removeClass('active')
-    $('.dependentTools').removeClass('active')
+    brushPrep('brush')
     $(this).toggleClass('active')
-    $('#brushMenuButton').addClass('active')
-    $('#paintTable td').off()
-    $('#paintTable').css('cursor','url("css/cursors/paintbrush_cursor.png"), auto')
     paint9()
   })
+}
+
+
+//SHARED ERASER AND BRUSH CODE
+function brushPrep(action){
+  $('.brushSizes').removeClass('active')
+  $('.dependentTools').removeClass('active')
+  $(`#${action}MenuButton`).addClass('active')
+  $('#paintTable td').off()
+  $('#paintTable').css('cursor',`url('css/cursors/${action}_cursor.png'), auto`)
 }
 
 
@@ -305,35 +303,23 @@ function eraserSizeListener(){
 
   $('#eraser1').on('click', function(event){
     event.stopPropagation()
-    $('.brushSizes').removeClass('active')
-    $('.dependentTools').removeClass('active')
     $(this).toggleClass('active')
-    $('#eraserMenuButton').addClass('active')
-    $('#paintTable td').off()
-    $('#paintTable').css('cursor','url("css/cursors/eraser_cursor.png"), auto')
+    brushPrep()
     eraser1()
   })
 
   $('#eraser4').on('click', function(event){
     event.stopPropagation()
-    $('.brushSizes').removeClass('active')
-    $('.dependentTools').removeClass('active')
     $(this).toggleClass('active')
-    $('#eraserMenuButton').addClass('active')
-    $('#paintTable td').off()
-    $('#paintTable').css('cursor','url("css/cursors/eraser_cursor.png"), auto')
+    brushPrep()
     eraser4()
   })
 
 
   $('#eraser9').on('click', function(event){
     event.stopPropagation()
-    $('.brushSizes').removeClass('active')
-    $('.dependentTools').removeClass('active')
     $(this).toggleClass('active')
-    $('#eraserMenuButton').addClass('active')
-    $('#paintTable td').off()
-    $('#paintTable').css('cursor','url("css/cursors/eraser_cursor.png"), auto')
+    brushPrep()
     eraser9()
   })
 }
@@ -345,7 +331,7 @@ $('#gridToggle').on('click', function(event) {
   $('#paintTable td').toggleClass('gridBorder')
 })
 
-//GRID TOGGLE
+//CLEAR CANVAS
 $('#clearCanvas').on('click', function(event) {
   event.preventDefault()
   $('#paintTable td').css('background-color', '#ffffff')

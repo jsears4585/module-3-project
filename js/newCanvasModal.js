@@ -1,5 +1,4 @@
 function createTable(x, y, pixelSize) {
-  // $('#colorPicker').show()
 
   let t = "<table id='paintTable'><thead></thead><tbody>"
   for(let i=0; i<y; i++) {
@@ -17,7 +16,6 @@ function createTable(x, y, pixelSize) {
     height: `${pixelSize}px`,
     background: 'white'
   })
-  // setPaintListener()
 }
 
 $('#canvasDimensionsForm').on('submit', function(event) {
