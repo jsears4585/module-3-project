@@ -10,15 +10,3 @@
 </div>
 
 <script src='../js/communityArtworks.js'></script>
-<script type="text/javascript">
-  var $grid = $('.masonryGrid').masonry({
-    itemSelector: '.grid-item',
-    gutter: 10,
-    transitionDuration: '1s',
-    stagger: 30
-  })
-  // layout Masonry after each image loads
-  $grid.imagesLoaded().progress(function() {
-    $grid.masonry('layout')
-  })
-</script>
