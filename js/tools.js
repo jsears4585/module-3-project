@@ -130,35 +130,33 @@ function brushSizeListener(){
 
   $('#brush1').on('click', function(event){
     event.stopPropagation()
-    brushPrep('brush')
-    $(this).toggleClass('active')
+    brushPrep('brush','1')
     paint1()
 
   })
 
   $('#brush4').on('click', function(event){
     event.stopPropagation()
-    brushPrep('brush')
-    $(this).toggleClass('active')
+    brushPrep('brush','4')
     paint4()
   })
 
 
   $('#brush9').on('click', function(event){
     event.stopPropagation()
-    brushPrep('brush')
-    $(this).toggleClass('active')
+    brushPrep('brush', '9')
     paint9()
   })
 }
 
 
 //SHARED ERASER AND BRUSH CODE
-function brushPrep(action){
+function brushPrep(action, size){
   $('.brushSizes').removeClass('active')
   $('.dependentTools').removeClass('active')
   $(`#${action}MenuButton`).addClass('active')
   $('#paintTable td').off()
+  $(`#${action}${size}`).toggleClass('active')
   $('#paintTable').css('cursor',`url('css/cursors/${action}_cursor.png'), auto`)
 }
 
@@ -180,9 +178,6 @@ function eyedropperListener(){
     $('.dependentTools').removeClass('active')
     $('.brushSizes').removeClass('active')
     $(this).toggleClass('active')
-
-
-
     $('#paintTable').css('cursor','url("css/cursors/eyedropper_cursor.png"), auto')
       $('#paintTable').off()
       eyedrop()
@@ -303,23 +298,20 @@ function eraserSizeListener(){
 
   $('#eraser1').on('click', function(event){
     event.stopPropagation()
-    $(this).toggleClass('active')
-    brushPrep()
+    brushPrep('eraser','1')
     eraser1()
   })
 
   $('#eraser4').on('click', function(event){
     event.stopPropagation()
-    $(this).toggleClass('active')
-    brushPrep()
+    brushPrep('eraser','4')
     eraser4()
   })
 
 
   $('#eraser9').on('click', function(event){
     event.stopPropagation()
-    $(this).toggleClass('active')
-    brushPrep()
+    brushPrep('eraser','9')
     eraser9()
   })
 }
