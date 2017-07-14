@@ -19,12 +19,21 @@ nav {
   padding: 10px;
 }
 
-#mainToolsMenu {
+#staticMenu {
   width: 100px;
   position: absolute;
   top: 70px;
   right: 100px;
 }
+
+
+#staticMenu a.item {
+  display: block;
+  width: 100px;
+  height: 90px;
+  padding: 24px 0 0 0;
+}
+
 
 .sp-replacer {
   border: none;
@@ -131,13 +140,6 @@ nav {
   display: block;
 }
 
-
-#mainToolsMenu a.item {
-  display: block;
-  width: 100px;
-  height: 90px;
-  padding: 24px 0 0 0;
-}
 
 #colorPicker div.text {
   display: block;
