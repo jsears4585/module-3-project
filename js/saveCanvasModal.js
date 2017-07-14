@@ -24,8 +24,7 @@ $('#saveCanvasForm').on('submit', function(event) {
   $('#paintTable').html(),
   $('#public').val())
   let values = newArtwork.render()
-  $('#canvasContainer').append(`<img src='${values.image}'>`)
-  debugger
+  $('#canvasContainer').append(`<img style='display: none' src='${values.image}'>`)
   $.ajax({
     url: 'http://localhost:3000/artworks',
     type: 'post',

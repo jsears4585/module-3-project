@@ -1,15 +1,17 @@
 function printTitle(data) {
   data.forEach(function(artwork) {
-    $('#communityArtworksList').append(`<li><a style='cursor: pointer;' data-id='${artwork.id}'>${artwork.title}</a></li>`)
+    $('#communityArtworksList').append(`<img src='${artwork.image}'>`)
+    console.log(artwork)
   })
 }
 $(function() {
+  let i = 1
   $.ajax({
-    url: 'http://localhost:3000/artworks',
+    url: `http://localhost:3000/artworks/page/${i}`,
     type: 'get',
     crossDomain: true
   }).done(function(data) {
-    // $('#communityArtworksList').append(`<table>${data[0].artwork_HTML}</table>`)
+    i++
     printTitle(data)
   }).done(function() {
     $('#communityArtworksList li a').on('click', function(event) {
