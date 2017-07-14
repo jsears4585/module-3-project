@@ -1,6 +1,6 @@
 function printTitle(data) {
   data.forEach(function(artwork) {
-    $('#communityArtworksList').append(`<img src='${artwork.image}'>`)
+    $('#communityArtworksList').append(`<img class="grid-item" src='${artwork.image}'>`)
     console.log(artwork)
   })
 }
