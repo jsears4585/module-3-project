@@ -18,12 +18,6 @@ function rgb2hex(rgb) {
 }
 
 //PAINT / BRUSH
-function setPaintListener() {
-  $('#paintTable').on('mouseover', function(event) {
-    console.log('ready to paint!')
-    event.stopPropagation()
-  })
-}
 
 function paint1() {
   $('#paintTable td').on('mousedown', function(event) {
@@ -126,17 +120,14 @@ function paint9() {
 }
 
 function brushSizeListener(){
-  $('#brushMenuButton').on('mouseover', function(event){
+  $('.brushes').on('mouseover', function(event){
       $('#brushMenu').show()
   })
 
-  $('#brushMenu').on('mouseover', function(event){
-      $('#brushMenu').show()
-  })
-
-  $('#brushMenu').on('mouseout', function(event){
+  $('.brushes').on('mouseout', function(event){
       $('#brushMenu').hide()
   })
+
 
   $('#brush1').on('click', function(event){
     event.stopPropagation()
@@ -201,22 +192,6 @@ function eyedropperListener(){
 }
 
 //ERASER
-
-// function eraser() {
-//   $('#paintTable td').on('mousedown', function(event) {
-//     event.stopPropagation()
-//     $(this).css('background-color', `#ffffff`)
-//
-//     $('#paintTable td').on('mouseover', function(e) {
-//       $(this).css('background-color', `#ffffff`)
-//     })
-//   })
-//   $('#paintTable td').on('mouseup', function(event) {
-//     $('#paintTable td').off()
-//     eraser()
-//     event.stopPropagation()
-//   })
-// }
 
 function eraser1() {
   $('#paintTable td').on('mousedown', function(event) {
@@ -320,15 +295,11 @@ function eraser9() {
 
 
 function eraserSizeListener(){
-  $('#eraserMenuButton').on('mouseover', function(event){
+  $('.erasers').on('mouseover', function(event){
       $('#eraserMenu').show()
   })
 
-  $('#eraserMenu').on('mouseover', function(event){
-      $('#eraserMenu').show()
-  })
-
-  $('#eraserMenu').on('mouseout', function(event){
+  $('.erasers').on('mouseout', function(event){
       $('#eraserMenu').hide()
   })
 
@@ -373,6 +344,13 @@ $('#gridToggle').on('click', function(event) {
   $('#gridToggle').toggleClass('active')
   $('#paintTable td').toggleClass('gridBorder')
 })
+
+//GRID TOGGLE
+$('#clearCanvas').on('click', function(event) {
+  event.preventDefault()
+  $('#paintTable td').css('background-color', '#ffffff')
+})
+
 
 //SAVE
 $('#showSaveModal').on('click', function(event){
